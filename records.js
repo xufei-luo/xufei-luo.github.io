@@ -13,20 +13,37 @@ function getRecordData() {
 
 function renderRecord(container, record) {
   container.replaceChildren();
+  const items = document.createElement('div');
+  items.className = 'record-items';
+  let current = [];
+
+  const appendCurrent = () => {
+    if (!current.length) return;
+    const item = document.createElement('p');
+    item.className = 'record-item';
+    item.textContent = current.join(' ');
+    items.append(item);
+    current = [];
+  };
+
   record.pages.forEach((page) => {
-    const section = document.createElement('section');
-    section.className = 'record-page';
-
-    const label = document.createElement('p');
-    label.className = 'record-page-label';
-    label.textContent = `${record.title} · source page ${page.sourcePage}`;
-
-    const content = document.createElement('pre');
-    content.textContent = page.text;
-
-    section.append(label, content);
-    container.append(section);
+    page.text.split('\n').map((line) => line.trim()).filter(Boolean).forEach((line) => {
+      if (/^(Publications \(in|Conference Abstracts|Projects \(Most)/i.test(line)) {
+        appendCurrent();
+        const category = document.createElement('p');
+        category.className = 'record-category';
+        category.textContent = line;
+        items.append(category);
+      } else if (/^(\d+\.|⚫)/.test(line)) {
+        appendCurrent();
+        current = [line];
+      } else if (current.length) {
+        current.push(line);
+      }
+    });
   });
+  appendCurrent();
+  container.append(items);
 }
 
 recordDetails.forEach((details) => {
