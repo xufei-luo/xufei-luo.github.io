@@ -23,6 +23,7 @@ function renderRecord(container, record) {
     const item = document.createElement('p');
     item.className = 'record-item';
     item.textContent = current.join(' ');
+    emphasizeNames(item);
     items.append(item);
     current = [];
   };
