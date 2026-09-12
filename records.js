@@ -16,6 +16,7 @@ function renderRecord(container, record) {
   const items = document.createElement('div');
   items.className = 'record-items';
   let current = [];
+  let skippingBooks = false;
 
   const appendCurrent = () => {
     if (!current.length) return;
@@ -28,6 +29,12 @@ function renderRecord(container, record) {
 
   record.pages.forEach((page) => {
     page.text.split('\n').map((line) => line.trim()).filter(Boolean).forEach((line) => {
+      if (/^Books \(n=\d+\)/i.test(line)) {
+        appendCurrent();
+        skippingBooks = true;
+        return;
+      }
+      if (skippingBooks) return;
       if (/^(Publications \(in|Conference Abstracts|Projects \(Most)/i.test(line)) {
         appendCurrent();
         const category = document.createElement('p');
