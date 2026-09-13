@@ -17,6 +17,7 @@ function renderRecord(container, record) {
   items.className = 'record-items';
   let current = [];
   let skippingBooks = false;
+  let skippingConferenceSupplement = false;
 
   const appendCurrent = () => {
     if (!current.length) return;
@@ -36,6 +37,12 @@ function renderRecord(container, record) {
         return;
       }
       if (skippingBooks) return;
+      if (record.title === 'Full conference abstract record' && /^(Programs|Patents and Software Copyrights)$/i.test(line)) {
+        appendCurrent();
+        skippingConferenceSupplement = true;
+        return;
+      }
+      if (skippingConferenceSupplement) return;
       if (/^(Publications \(in|Conference Abstracts|Projects \(Most)/i.test(line)) {
         appendCurrent();
         const category = document.createElement('p');
