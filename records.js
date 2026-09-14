@@ -47,7 +47,7 @@ function renderRecord(container, record) {
         appendCurrent();
         const category = document.createElement('p');
         category.className = 'record-category';
-        category.textContent = line;
+        category.textContent = line.replace(/\s*\(n=\d+\)/i, '');
         items.append(category);
       } else if (/^(\d+\.\s+(?=[A-Z\u4e00-\u9fff])|⚫)/.test(line)) {
         appendCurrent();
