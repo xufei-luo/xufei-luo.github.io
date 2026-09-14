@@ -49,7 +49,7 @@ function renderRecord(container, record) {
         category.className = 'record-category';
         category.textContent = line.replace(/\s*\(n=\d+\)/i, '');
         items.append(category);
-      } else if (/^(\d+\.\s+(?=[A-Z\u4e00-\u9fff])|⚫)/.test(line)) {
+      } else if (/^(\d{1,3}\.\s+(?=[A-Z\u4e00-\u9fff])|⚫)/.test(line)) {
         appendCurrent();
         current = [line];
       } else if (current.length) {
