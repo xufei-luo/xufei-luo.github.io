@@ -1,4 +1,5 @@
 const recordDetails = document.querySelectorAll('[data-record]');
+const recordLists = document.querySelectorAll('[data-record-list]');
 let recordDataPromise;
 
 function getRecordData() {
@@ -75,4 +76,13 @@ recordDetails.forEach((details) => {
       output.textContent = 'The complete record could not be loaded. Please refresh and try again.';
     }
   });
+});
+
+recordLists.forEach(async (output) => {
+  try {
+    const data = await getRecordData();
+    renderRecord(output, data[output.dataset.recordList]);
+  } catch {
+    output.textContent = 'The complete record could not be loaded. Please refresh and try again.';
+  }
 });
