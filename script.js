@@ -6,7 +6,6 @@ document.querySelectorAll('.site-header .brand').forEach((brand) => {
 const pageTitles = {
   'research.html': 'Research',
   'awards.html': 'Awards & Grants',
-  'guidelines.html': 'Guidelines',
   'publications.html': 'Publications',
   'books.html': 'Books & Patents',
   'conference.html': 'Conference',
