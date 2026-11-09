@@ -63,7 +63,13 @@ function renderRecord(container, record) {
         appendCurrent();
         const category = document.createElement('p');
         category.className = 'record-category';
-        category.textContent = line.replace(/\s*\(n=\d+\)/i, '');
+        if (/^Publications \(in English/i.test(line)) {
+          category.textContent = 'Publications (in English, n=124)';
+        } else if (/^Publications \(in Chinese/i.test(line)) {
+          category.textContent = 'Publications (in Chinese, n=72)';
+        } else {
+          category.textContent = line.replace(/\s*\(n=\d+\)/i, '');
+        }
         items.append(category);
         publicationNumber = /^Publications \(in/i.test(line) ? 0 : null;
       } else if (/^(\d{1,3}\.\s+(?=[A-Z\u4e00-\u9fff])|⚫)/.test(line)) {
