@@ -59,7 +59,8 @@ function renderRecord(container, record) {
         return;
       }
       if (skippingConferenceSupplement) return;
-      if (/^(Publications \(in|Conference Abstracts|Projects \(Most)/i.test(line)) {
+      if (/^Projects \(Most/i.test(line)) return;
+      if (/^(Publications \(in|Conference Abstracts)/i.test(line)) {
         appendCurrent();
         const category = document.createElement('p');
         category.className = 'record-category';
