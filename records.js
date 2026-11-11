@@ -2,7 +2,9 @@ const recordDetails = document.querySelectorAll('[data-record]');
 const recordLists = document.querySelectorAll('[data-record-list]');
 let recordDataPromise;
 
+const spiritADoi = '10.1111/jebm.70208';
 const latestEnglishPublications = [
+  `Duan Y, Lin H, Zhou Z, Lee MS, Alraek T, Chan AW, Chen Y, Lee YS, Kim TH, Liu J, Liu C, Guo Y, Yan S, He X, Shi L, Xu Z, Luo X, Sng KS, Ngeh E, Spruyt K, Lee B, Poini A, Giovanardi CM, Estill J, Matsuura Y, Birch S, Min LS, Bian Z, Yu L. SPIRIT-A: An extension of SPIRIT 2025 for acupuncture clinical trial protocols. Journal of Evidence-Based Medicine. Published online November 9, 2026. doi:${spiritADoi}. (IF:4.7, reporting guideline)`,
   'Chen Y, Luo X, Zhang L. The second step: Making medical AI answerable to evidence. AI Evidence-Based Medicine. 2026;1(2):53-55. doi:10.1097/ai9.0000000000000015. (editorial)',
   'Wang L, Luo X, Zhang J, Wu M, Wang X, Zhao J, Estill J, Shao R. What can artificial intelligence do for randomized controlled trials?: A scoping review. AI Evidence-Based Medicine. 2026;1(2):76-86. doi:10.1097/ai9.0000000000000019. (review)',
   'Wang Q, Luo X, Ma Y, Wang Z, Zhang L, Chen Y. Artificial intelligence in the guideline enterprise: insights from GIN 2026. AI Evidence-Based Medicine. Published online October 12, 2026. doi:10.1097/ai9.0000000000000025. (editorial)',
@@ -40,6 +42,15 @@ function renderRecord(container, record) {
     item.textContent = publicationNumber === null
       ? text
       : `${++publicationNumber}. ${text.replace(/^\d{1,3}\.\s+/, '')}`;
+    const doiIndex = item.textContent.indexOf(spiritADoi);
+    if (doiIndex !== -1) {
+      const citation = item.textContent;
+      const doiLink = document.createElement('a');
+      doiLink.href = `https://doi.org/${spiritADoi}`;
+      doiLink.textContent = spiritADoi;
+      doiLink.style.textDecoration = 'underline';
+      item.replaceChildren(citation.slice(0, doiIndex), doiLink, citation.slice(doiIndex + spiritADoi.length));
+    }
     emphasizeNames(item);
     items.append(item);
     current = [];
@@ -65,7 +76,7 @@ function renderRecord(container, record) {
         const category = document.createElement('p');
         category.className = 'record-category';
         if (/^Publications \(in English/i.test(line)) {
-          category.textContent = 'Publications (in English, n=124)';
+          category.textContent = 'Publications (in English, n=125)';
         } else if (/^Publications \(in Chinese/i.test(line)) {
           category.textContent = 'Publications (in Chinese, n=72)';
         } else {
