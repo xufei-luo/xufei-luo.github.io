@@ -16,7 +16,7 @@ const latestEnglishPublications = [
 
 function getRecordData() {
   if (!recordDataPromise) {
-    recordDataPromise = fetch('records.json').then((response) => {
+    recordDataPromise = fetch('records.json?v=chinese-73').then((response) => {
       if (!response.ok) throw new Error('Unable to load record data');
       return response.json();
     });
@@ -78,7 +78,7 @@ function renderRecord(container, record) {
         if (/^Publications \(in English/i.test(line)) {
           category.textContent = 'Publications (in English, n=125)';
         } else if (/^Publications \(in Chinese/i.test(line)) {
-          category.textContent = 'Publications (in Chinese, n=72)';
+          category.textContent = 'Publications (in Chinese, n=73)';
         } else {
           category.textContent = line.replace(/\s*\(n=\d+\)/i, '');
         }
