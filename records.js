@@ -24,6 +24,11 @@ function getRecordData() {
   return recordDataPromise;
 }
 
+function guidelinePublicationYear(item) {
+  const citation = item.textContent.split(/Project leads?\s*:|My role\s*:/i, 1)[0];
+  return Number(citation.match(/,\s*((?:19|20)\d{2})\.\s*$/)?.[1] ?? 0);
+}
+
 function renderRecord(container, record) {
   container.replaceChildren();
   const items = document.createElement('div');
@@ -101,6 +106,15 @@ function renderRecord(container, record) {
     });
   });
   appendCurrent();
+  if (container.dataset.recordList === 'guidelines') {
+    const ordered = Array.from(items.children).sort(
+      (a, b) => guidelinePublicationYear(b) - guidelinePublicationYear(a)
+    );
+    ordered.forEach((item, index) => {
+      item.firstChild.textContent = item.firstChild.textContent.replace(/^\d+\.\s+/, `${index + 1}. `);
+    });
+    items.replaceChildren(...ordered);
+  }
   container.append(items);
 }
 
