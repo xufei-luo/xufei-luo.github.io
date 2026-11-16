@@ -6,7 +6,7 @@
   <title>Xufei Luo | Evidence-based Medicine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=research-activity">
+  <link rel="stylesheet" href="styles.css?v=interactive-research-activity">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -54,9 +54,9 @@
         <section class="research-activity" aria-labelledby="research-activity-title">
           <h2 id="research-activity-title">Research activity per year</h2>
           <figure>
-            <svg viewBox="0 0 406 138" role="img" aria-labelledby="activity-chart-title activity-chart-description">
+            <svg viewBox="0 0 406 138" role="group" aria-labelledby="activity-chart-title" aria-describedby="activity-chart-description">
               <title id="activity-chart-title">Annual publications, 2014 to 2026</title>
-              <desc id="activity-chart-description">Stacked bars show English- and Chinese-language publications. The largest total is 36 papers in 2022. Full counts are listed below.</desc>
+              <desc id="activity-chart-description">Stacked bars show English- and Chinese-language publications. Select a year to see its counts.</desc>
               <line class="activity-baseline" x1="10" y1="112" x2="396" y2="112"/>
               <g class="activity-year">
                 <title>2014: 1 publications (0 English, 1 Chinese)</title>
@@ -120,6 +120,7 @@
               <text x="10" y="132">2014</text>
               <text x="396" y="132" text-anchor="end">2026</text>
             </svg>
+            <p id="activity-selection" class="activity-selection" aria-live="polite">Select a bar to see that year’s counts.</p>
             <figcaption class="activity-legend">
               <span><i class="activity-english" aria-hidden="true"></i> English <strong>125</strong></span>
               <span><i class="activity-chinese" aria-hidden="true"></i> Chinese <strong>73</strong></span>
@@ -163,4 +164,5 @@
   <footer>© <span data-year></span> Xufei Luo · Evidence-based medicine, guidelines, and responsible AI</footer>
   <script src="script.js"></script>
   <script src="collaborations.js" defer></script>
+  <script src="research-activity.js" defer></script>
 </body></html>

@@ -127,6 +127,10 @@ footer { border-top:1px solid var(--line); padding:22px clamp(22px,5vw,74px); co
 .research-activity svg text { fill: var(--muted); font: 14px var(--sans); }
 .activity-english { fill: var(--purple); background: var(--purple); }
 .activity-chinese { fill: #94909e; background: #94909e; }
+.activity-hit-area { fill: transparent; cursor: pointer; }
+.activity-year[aria-pressed="true"] .activity-hit-area { fill: #5b3b8614; }
+.activity-year:focus-visible .activity-hit-area { stroke: var(--purple-dark); }
+.research-activity .activity-selection { min-height: 2.7em; margin: 4px 0 8px; color: var(--ink); }
 .activity-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--muted); }
 .activity-legend i { display: inline-block; width: 10px; height: 10px; }
 .research-activity summary { cursor: pointer; }
