@@ -6,7 +6,7 @@
   <title>Xufei Luo | Evidence-based Medicine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=home-sdg-spacing">
+  <link rel="stylesheet" href="styles.css?v=collaborations">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -30,6 +30,27 @@
             <img src="un-sustainable-development-goals.png" width="1600" height="650" loading="lazy" alt="Research areas mapped to UN Sustainable Development Goals: 3 Good Health and Well-being, 9 Industry, Innovation and Infrastructure, 5 Gender Equality, and 10 Reduced Inequalities">
           </a>
         </figure>
+        <section class="collaborations" aria-labelledby="collaborations-title">
+          <h2 id="collaborations-title">Research collaborations</h2>
+          <p id="collaborations-status" aria-live="polite">Loading co-author affiliations…</p>
+          <div id="collaborations-controls" hidden>
+            <svg id="collaborations-map" viewBox="0 0 720 306" role="group" aria-label="Co-author affiliations on a world map"></svg>
+            <div class="collaborations-toolbar" aria-label="Map zoom">
+              <button type="button" id="collaborations-zoom-in" aria-label="Zoom in">+</button>
+              <button type="button" id="collaborations-zoom-out" aria-label="Zoom out">−</button>
+              <button type="button" id="collaborations-reset">Reset</button>
+            </div>
+            <label for="collaborations-region">Country or territory</label>
+            <select id="collaborations-region"></select>
+            <div id="collaborations-detail" aria-live="polite"></div>
+          </div>
+          <details class="collaborations-source">
+            <summary>Data and methods</summary>
+            <p id="collaborations-method"></p>
+            <p>Affiliations: <a href="https://openalex.org/authors/A5057955540">OpenAlex</a> and the <a href="publications.html">English publications list</a>. Basemap: <a href="https://www.naturalearthdata.com/">Natural Earth</a>.</p>
+          </details>
+          <noscript><p>Enable JavaScript to explore the collaboration map.</p></noscript>
+        </section>
       </aside>
       <section class="home-copy" aria-label="Biography">
         <p><strong>Xufei Luo, MPH, PhD</strong>, Postdoctoral Research Fellow at Hong Kong Baptist University.</p>
@@ -44,4 +65,5 @@
   </main>
   <footer>© <span data-year></span> Xufei Luo · Evidence-based medicine, guidelines, and responsible AI</footer>
   <script src="script.js"></script>
+  <script src="collaborations.js" defer></script>
 </body></html>

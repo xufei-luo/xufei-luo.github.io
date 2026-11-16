@@ -66,6 +66,58 @@ footer { border-top:1px solid var(--line); padding:22px clamp(22px,5vw,74px); co
     max-width: 520px;
   }
 }
+.collaborations {
+  margin: 24px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  text-align: left;
+  font-size: 13px;
+}
+.collaborations h2 {
+  margin: 0;
+  color: var(--purple-dark);
+  font: 600 25px/1.2 var(--serif);
+}
+.collaborations p { margin: 4px 0 10px; color: var(--muted); }
+.collaborations svg {
+  display: block;
+  width: 100%;
+  background: var(--soft);
+  touch-action: pan-y;
+}
+.collaborations .map-land {
+  fill: #c8c5ce;
+  stroke: #f7f4fa;
+  stroke-width: 0.45;
+  vector-effect: non-scaling-stroke;
+}
+.collaborations .map-dot {
+  fill: var(--purple);
+  stroke: white;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+.collaborations .map-dot[aria-pressed="true"],
+.collaborations .map-dot:focus { fill: #b56032; stroke: var(--ink); }
+.collaborations-toolbar { display: flex; gap: 6px; margin: 8px 0; }
+.collaborations button,
+.collaborations select {
+  color: var(--purple-dark);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font: inherit;
+}
+.collaborations select { width: 100%; margin-bottom: 8px; }
+.collaborations summary { cursor: pointer; }
+.collaborations ul { margin: 4px 0; padding-left: 18px; }
+.collaborations-source { margin-top: 8px; }
+.collaborations a { color: var(--purple-dark); text-decoration: underline; }
+@media (max-width: 900px) {
+  .collaborations { max-width: 520px; margin-inline: auto; }
+}
 .home-copy p {
   text-align: justify;
 }
