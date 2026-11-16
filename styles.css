@@ -51,7 +51,7 @@ footer { border-top:1px solid var(--line); padding:22px clamp(22px,5vw,74px); co
   object-fit: contain;
 }
 .profile-sdg {
-  margin: 112px 0 0;
+  margin: 16px auto 0;
 }
 .profile-sdg a,
 .profile-sdg img {
@@ -64,7 +64,6 @@ footer { border-top:1px solid var(--line); padding:22px clamp(22px,5vw,74px); co
 @media (max-width: 900px) {
   .profile-sdg {
     max-width: 520px;
-    margin: 32px auto 0;
   }
 }
 .home-copy p {
